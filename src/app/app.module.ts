@@ -8,13 +8,16 @@ import { InputSearchComponent } from './components/input-search/input-search.com
 import { MatAutocompleteModule } from "@angular/material/autocomplete";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatFormFieldModule } from "@angular/material/form-field";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 import {AlertDialogComponent} from "./components/alert-dialog/alert-dialog.component";
+import {MatIconModule} from "@angular/material/icon";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
   declarations: [
     AppComponent,
-    InputSearchComponent
+    InputSearchComponent,
+    AlertDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +25,10 @@ import {AlertDialogComponent} from "./components/alert-dialog/alert-dialog.compo
     BrowserAnimationsModule,
     MatAutocompleteModule,
     ReactiveFormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule,
+    MatIconModule
   ],
   providers: [AlertDialogComponent,
     { provide: MAT_DIALOG_DATA, useValue: {} },
