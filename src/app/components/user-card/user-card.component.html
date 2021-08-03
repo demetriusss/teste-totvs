@@ -7,11 +7,11 @@
       <mat-card-title>{{ user?.login }}</mat-card-title>
       <mat-card-subtitle>{{user?.url }}</mat-card-subtitle>
     </div>
+    <div class="learnMore">
+      <button  mat-button color="primary" (click)="openModal(user?.login)">
+        <mat-icon>info</mat-icon>
+        Saiba mais
+      </button>
+    </div>
   </mat-card-header>
-  <mat-card-actions [align]="'end'">
-    <button mat-button color="primary" (click)="openModal(user?.login)">
-      <mat-icon>info</mat-icon>
-      Saiba mais
-    </button>
-  </mat-card-actions>
 </mat-card>
