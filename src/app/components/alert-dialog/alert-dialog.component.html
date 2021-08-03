@@ -1,7 +1,17 @@
-<h2 *ngIf="this.data.titulo" mat-dialog-title>{{this.data.titulo}}</h2>
 <mat-dialog-content class="mat-typography">
-    {{this.data.message}}
+    <div class="userAvatar">
+      <img [src]="this.data?.user?.avatar_url" />
+    </div>
+    <div class="userData">
+      <p><mat-icon color="primary">account_circle</mat-icon>{{this.data?.user?.name}}</p>
+      <p><mat-icon color="primary">email</mat-icon>{{this.data?.user?.email ?? 'No have email'}}</p>
+      <p><mat-icon color="primary">language</mat-icon><a href="{{this.data?.user?.url}}">{{this.data?.user?.url}}</a></p>
+      <p><mat-icon color="primary">description</mat-icon>{{this.data?.user?.bio ?? 'No have bio'}}</p>
+      <p><mat-icon color="primary">thumb_up_off_alt</mat-icon>{{this.data?.user?.followers ?? 'No have followers'}}</p>
+      <p><mat-icon color="primary">person_add</mat-icon>{{this.data?.user?.following ?? 'Not following anyone '}}</p>
+      <p><mat-icon color="primary">layers</mat-icon>{{this.data?.user?.public_repos ?? 'No have public repositories'}}</p>
+      <p><mat-icon color="primary">sports_score</mat-icon>{{this.data?.user?.score ?? 'No have scores'}}</p>
+    </div>
+    <button mat-button mat-dialog-close color="primary">Voltar</button>
 </mat-dialog-content>
-<mat-dialog-actions class="actions">
-    <button mat-button mat-dialog-close color="primary">OK</button>
-</mat-dialog-actions>
+

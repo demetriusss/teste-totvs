@@ -1,0 +1,42 @@
+.actions {
+    display: flex;
+    justify-content: flex-end;
+}
+mat-dialog-content {
+  width: 800px;
+  word-break: break-all;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+
+  .userData {
+    width: 100%;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+
+    mat-icon {
+      margin-right: 5px;
+    }
+
+    p {
+      display: flex;
+      align-items: center;
+      font-family: Roboto;
+      font-size: 18px;
+      font-weight: 300;
+    }
+  }
+
+  .userAvatar {
+      img {
+        width: 300px;
+        height: 300px;
+      }
+  }
+
+  button {
+    position: relative;
+    width: 80px;
+  }
+}

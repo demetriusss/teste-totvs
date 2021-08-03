@@ -15,4 +15,8 @@ export class UserService {
   list(searchText:string):Observable<User[] | any> {
     return this.http.get<User[] | any>(`${environment.API}/search/users`, {params: {q: searchText}});
   }
+
+  get(loginUser:string):Observable<User | any> {
+    return this.http.get<User | any>(`${environment.API}/users/${loginUser}`);
+  }
 }
