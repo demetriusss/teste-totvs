@@ -15,28 +15,32 @@ import { UserCardComponent } from './components/user-card/user-card.component';
 import { MatCardModule } from "@angular/material/card";
 import { MatButtonModule } from "@angular/material/button";
 import { HttpClientModule } from "@angular/common/http";
+import { SpinnerLoadingComponent } from './components/spinner-loading/spinner-loading.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
     AppComponent,
     InputSearchComponent,
     AlertDialogComponent,
-    UserCardComponent
+    UserCardComponent,
+    SpinnerLoadingComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatAutocompleteModule,
-        ReactiveFormsModule,
-        MatFormFieldModule,
-        MatInputModule,
-        MatDialogModule,
-        MatIconModule,
-        MatCardModule,
-        MatButtonModule,
-        HttpClientModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatAutocompleteModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDialogModule,
+    MatIconModule,
+    MatCardModule,
+    MatButtonModule,
+    HttpClientModule,
+    MatProgressSpinnerModule
+  ],
   providers: [AlertDialogComponent,
     { provide: MAT_DIALOG_DATA, useValue: {} },
     { provide: MatDialogRef, useValue: {} }],

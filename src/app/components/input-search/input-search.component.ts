@@ -12,6 +12,7 @@ export class InputSearchComponent implements OnInit {
 
   form: FormGroup;
   @Output() inputChanges = new EventEmitter<User[] | any>();
+  @Output() loading = new EventEmitter<boolean>();
 
   constructor(private userService:UserService, private formBuilder:FormBuilder) { }
 
@@ -22,9 +23,14 @@ export class InputSearchComponent implements OnInit {
     });
 
     this.form?.get('searchControl')?.valueChanges.subscribe(serchtext => {
-      this.userService.list(serchtext).subscribe(results => {
-        this.inputChanges.emit(results);
-      })
+
+      if (serchtext !== '') {
+        this.loading.emit(true);
+
+        this.userService.list(serchtext).subscribe(results => {
+          this.inputChanges.emit(results);
+        }, () => {}, () => {this.loading.emit(false);})
+      }
     })
   }
 }

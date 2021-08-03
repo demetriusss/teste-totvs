@@ -10,18 +10,18 @@ import { User } from "./models/User";
 export class AppComponent implements OnInit {
 
   users:User[];
+  loading = false;
 
   constructor(private userService: UserService) {}
 
   getInputChanges(results:User[]|any): void{
-    console.log(results);
     this.users = results.items;
   }
 
+  getLoadingChanges(loading:boolean): void {
+    this.loading = loading;
+  }
+
   ngOnInit() {
-    this.userService.list("de").subscribe((result) => {
-      this.users = result.items;
-      console.log(result.items);
-    });
   }
 }

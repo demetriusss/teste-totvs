@@ -1,9 +1,14 @@
 <main>
   <div class="side left-side">
     <p class="searchtitle">Digite um nome para pesquisar</p>
-    <input-search (inputChanges)="getInputChanges($event)"></input-search>
+    <input-search (inputChanges)="getInputChanges($event)" (loading)="getLoadingChanges($event)"></input-search>
   </div>
   <div class="side right-side">
-    <user-card [users]="users"></user-card>
+    <ng-container *ngIf="!loading; else loadUsers">
+      <user-card [users]="users"></user-card>
+    </ng-container>
+    <ng-template #loadUsers>
+      <spinner-loading [loading]="this.loading"></spinner-loading>
+    </ng-template>
   </div>
 </main>
