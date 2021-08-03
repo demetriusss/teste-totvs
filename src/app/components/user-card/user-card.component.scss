@@ -8,8 +8,19 @@ mat-card-title, mat-card-subtitle{
 }
 
 mat-card-header {
+
   display: flex;
   align-items: center;
+
+  .username {
+    margin-left: 10px;
+  }
+
+  img {
+    width: 80px;
+    height: 80px;
+    border-radius: 40px;
+  }
 }
 
 .example-header-image {

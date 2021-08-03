@@ -1,6 +1,6 @@
-<form class="example-form">
+<form [formGroup]="form" class="example-form">
   <mat-form-field appearance="outline">
-    <input matInput placeholder="Digite um nome">
+    <input formControlName="searchControl" matInput placeholder="Digite um nome">
     <mat-icon matSuffix>search</mat-icon>
   </mat-form-field>
 </form>

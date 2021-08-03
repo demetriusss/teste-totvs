@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from "@angular/forms";
-import { Observable } from "rxjs";
-import {map, startWith} from "rxjs/operators";
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {UserService} from "../../services/user.service";
+import {User} from "../../models/User";
 
 @Component({
   selector: 'input-search',
@@ -10,23 +10,21 @@ import {map, startWith} from "rxjs/operators";
 })
 export class InputSearchComponent implements OnInit {
 
-  myControl = new FormControl();
-  filteredOptions: Observable<string[]>;
-  options: string[] = ['One', 'Two', 'Three'];
+  form: FormGroup;
+  @Output() inputChanges = new EventEmitter<User[] | any>();
 
-  constructor() { }
+  constructor(private userService:UserService, private formBuilder:FormBuilder) { }
 
   ngOnInit(): void {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
-      startWith(''),
-      map(value => this._filter(value))
-    );
+
+    this.form = this.formBuilder.group({
+      searchControl: ['']
+    });
+
+    this.form?.get('searchControl')?.valueChanges.subscribe(serchtext => {
+      this.userService.list(serchtext).subscribe(results => {
+        this.inputChanges.emit(results);
+      })
+    })
   }
-
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
-  }
-
 }

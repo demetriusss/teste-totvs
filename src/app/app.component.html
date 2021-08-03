@@ -1,9 +1,9 @@
 <main>
   <div class="side left-side">
     <p class="searchtitle">Digite um nome para pesquisar</p>
-    <input-search></input-search>
+    <input-search (inputChanges)="getInputChanges($event)"></input-search>
   </div>
   <div class="side right-side">
-    <user-card></user-card>
+    <user-card [users]="users"></user-card>
   </div>
 </main>
